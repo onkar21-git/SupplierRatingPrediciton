@@ -6,7 +6,7 @@
         WindowState="Maximized"
         xmlns:local="clr-namespace:SupplierRatingPrediction_UI"
         mc:Ignorable="d"
-        
+        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
         Title="Dashboard" Height="auto" Width="auto">
     <Window.Resources>
         <ResourceDictionary Source="Styles\BlueThemeStyle.xaml"/>
@@ -122,6 +122,87 @@
                         Grid.Row="3"
                         Grid.Column="1" 
                         Margin="5,40,0,0" />
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Name="barChartGrid" Margin="0,20,0,0">
+                        <chartingToolkit:Chart Name="barChart" Title="Bar Series Demo" 
+                                               VerticalAlignment="Top" 
+                                               Height="300">
+                            <chartingToolkit:BarSeries  DependentValuePath="Value" 
+                                                        IndependentValuePath="Key" 
+                                                        ItemsSource="{Binding}"
+                                                        SelectionChanged="barChart_SelectionChanged"
+                                IsSelectionEnabled="True"/>
+                        </chartingToolkit:Chart>
+                    </Grid>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <Grid Name="DetailsGrid" 
+                      HorizontalAlignment="Left" 
+                      Margin="0,20,0,0" 
+                      Background="Black">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Commodity" 
+                           Grid.Row="0" 
+                           Grid.Column="0" 
+                           Margin="0,50,0,0"
+                           Padding="10"
+                           FontSize="25"/>
+                        <TextBlock Text="Order Amount" 
+                           Grid.Row="1" 
+                           Grid.Column="0" 
+                           Padding="10"
+                           FontSize="25"/>
+                        <TextBlock Text="Volume" 
+                           Grid.Row="2" 
+                           Grid.Column="0" 
+                           Padding="10"                               
+                           FontSize="25"/>
+                        <TextBox x:Name="atxtCommodity"
+                         Grid.Row="0"
+                         Grid.Column="1" 
+                         MinHeight="5"
+                         MinWidth="200"
+                         Margin="10,60,10,10"
+                         FontSize="25"/>
+                        <TextBox x:Name="atxtOrderAmount"
+                         Grid.Row="1"
+                         Grid.Column="1" 
+                         MinHeight="5"
+                         MinWidth="200"
+                         Margin="10" 
+                         FontSize="25"/>
+                        <TextBox x:Name="atxtVolume"
+                         Grid.Row="2"
+                         Grid.Column="1" 
+                         MinHeight="5"
+                         MinWidth="200"
+                         Margin="10" 
+                         FontSize="25"/>
+                        <Button x:Name="abtnPredict"
+                        Content="Predict Rating"
+                        Grid.Row="3"
+                        Grid.Column="0" 
+                        Margin="0,40,5,0" />
+                        <Button Name="abtnClose"
+                        Content="Clear"
+                        Grid.Row="3"
+                        Grid.Column="1" 
+                        Margin="5,40,0,0" />
+                    </Grid>
+                    </StackPanel>
                 </Grid>
             </Grid>
         </Grid>

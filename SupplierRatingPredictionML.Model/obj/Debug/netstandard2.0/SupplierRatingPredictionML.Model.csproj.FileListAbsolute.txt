@@ -7,3 +7,11 @@ C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction\Sup
 C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction\SupplierRatingPredictionML.Model\obj\Debug\netstandard2.0\SupplierRatingPredictionML.Model.AssemblyInfo.cs
 C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction\SupplierRatingPredictionML.Model\obj\Debug\netstandard2.0\SupplierRatingPredictionML.Model.dll
 C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction\SupplierRatingPredictionML.Model\obj\Debug\netstandard2.0\SupplierRatingPredictionML.Model.pdb
+C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPredictionML.Model\bin\Debug\netstandard2.0\MLModel.zip
+C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPredictionML.Model\bin\Debug\netstandard2.0\SupplierRatingPredictionML.Model.deps.json
+C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPredictionML.Model\bin\Debug\netstandard2.0\SupplierRatingPredictionML.Model.dll
+C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPredictionML.Model\bin\Debug\netstandard2.0\SupplierRatingPredictionML.Model.pdb
+C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPredictionML.Model\obj\Debug\netstandard2.0\SupplierRatingPredictionML.Model.AssemblyInfoInputs.cache
+C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPredictionML.Model\obj\Debug\netstandard2.0\SupplierRatingPredictionML.Model.AssemblyInfo.cs
+C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPredictionML.Model\obj\Debug\netstandard2.0\SupplierRatingPredictionML.Model.dll
+C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPredictionML.Model\obj\Debug\netstandard2.0\SupplierRatingPredictionML.Model.pdb

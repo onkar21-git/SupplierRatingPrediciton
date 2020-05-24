@@ -3730,11 +3730,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction\\SupplierRatingPredictionML.Model\\SupplierRatingPredictionML.Model.csproj",
+      "projectUniqueName": "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction_GIT\\SupplierRatingPredictionML.Model\\SupplierRatingPredictionML.Model.csproj",
       "projectName": "SupplierRatingPredictionML.Model",
-      "projectPath": "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction\\SupplierRatingPredictionML.Model\\SupplierRatingPredictionML.Model.csproj",
+      "projectPath": "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction_GIT\\SupplierRatingPredictionML.Model\\SupplierRatingPredictionML.Model.csproj",
       "packagesPath": "C:\\Users\\walavonk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction\\SupplierRatingPredictionML.Model\\obj\\",
+      "outputPath": "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction_GIT\\SupplierRatingPredictionML.Model\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

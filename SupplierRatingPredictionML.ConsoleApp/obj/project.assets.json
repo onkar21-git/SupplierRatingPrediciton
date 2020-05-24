@@ -4103,11 +4103,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction\\SupplierRatingPredictionML.ConsoleApp\\SupplierRatingPredictionML.ConsoleApp.csproj",
+      "projectUniqueName": "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction_GIT\\SupplierRatingPredictionML.ConsoleApp\\SupplierRatingPredictionML.ConsoleApp.csproj",
       "projectName": "SupplierRatingPredictionML.ConsoleApp",
-      "projectPath": "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction\\SupplierRatingPredictionML.ConsoleApp\\SupplierRatingPredictionML.ConsoleApp.csproj",
+      "projectPath": "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction_GIT\\SupplierRatingPredictionML.ConsoleApp\\SupplierRatingPredictionML.ConsoleApp.csproj",
       "packagesPath": "C:\\Users\\walavonk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction\\SupplierRatingPredictionML.ConsoleApp\\obj\\",
+      "outputPath": "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction_GIT\\SupplierRatingPredictionML.ConsoleApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -4126,8 +4126,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction\\SupplierRatingPredictionML.Model\\SupplierRatingPredictionML.Model.csproj": {
-              "projectPath": "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction\\SupplierRatingPredictionML.Model\\SupplierRatingPredictionML.Model.csproj"
+            "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction_GIT\\SupplierRatingPredictionML.Model\\SupplierRatingPredictionML.Model.csproj": {
+              "projectPath": "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction_GIT\\SupplierRatingPredictionML.Model\\SupplierRatingPredictionML.Model.csproj"
             }
           }
         }

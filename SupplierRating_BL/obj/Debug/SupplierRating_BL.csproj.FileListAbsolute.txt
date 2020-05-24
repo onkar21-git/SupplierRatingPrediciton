@@ -1,0 +1,1 @@
+C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRating_BL\obj\Debug\SupplierRating_BL.csprojAssemblyReference.cache
