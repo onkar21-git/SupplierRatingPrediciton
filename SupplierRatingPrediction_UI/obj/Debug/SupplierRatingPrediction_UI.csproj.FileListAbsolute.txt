@@ -38,6 +38,5 @@ C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT
 C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPrediction_UI\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.dll
 C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPrediction_UI\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.xml
 C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPrediction_UI\obj\Debug\SupplierRatingPrediction_UI.csproj.CopyComplete
-C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPrediction_UI\obj\Debug\SupplierRatingPrediction_UI.csprojAssemblyReference.cache
 C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPrediction_UI\bin\Debug\Microsoft.Maps.MapControl.WPF.dll
 C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPrediction_UI\bin\Debug\Microsoft.Maps.MapControl.WPF.xml

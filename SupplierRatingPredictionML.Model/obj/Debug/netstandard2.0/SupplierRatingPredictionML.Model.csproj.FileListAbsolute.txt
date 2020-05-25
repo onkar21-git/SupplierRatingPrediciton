@@ -15,3 +15,4 @@ C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT
 C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPredictionML.Model\obj\Debug\netstandard2.0\SupplierRatingPredictionML.Model.AssemblyInfo.cs
 C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPredictionML.Model\obj\Debug\netstandard2.0\SupplierRatingPredictionML.Model.dll
 C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPredictionML.Model\obj\Debug\netstandard2.0\SupplierRatingPredictionML.Model.pdb
+C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPredictionML.Model\obj\Debug\netstandard2.0\SupplierRatingPredictionML.Model.csprojAssemblyReference.cache

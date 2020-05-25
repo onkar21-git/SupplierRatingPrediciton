@@ -39,27 +39,33 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="200"></ColumnDefinition>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="180"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Text="Commodity" 
+                <TextBlock Text="Username" 
                            Grid.Row="0" 
                            Grid.Column="0" 
+                           FontWeight="Bold"
+                           FontSize="20"
                            Padding="10"/>
                 <TextBlock Text="Password"
                            Grid.Row="1"
                            Grid.Column="0"
+                           FontWeight="Bold"
+                           FontSize="20"
                            Padding="10" />
                 <PasswordBox x:Name="txtPassword"
                              Grid.Row="1"
                              Grid.Column="1" 
-                             MinHeight="5"
+                             MinHeight="10"
+                             FontSize="15"
                              Margin="10" />
                 <TextBox x:Name="txtUserName"
                          Grid.Row="0"
                          Grid.Column="1" 
-                         MinHeight="5"
+                         MinHeight="10"
+                         FontSize="15"
                          Margin="10" />
                 <Button x:Name="btnLogin"
                         Click="btnLogin_Click"

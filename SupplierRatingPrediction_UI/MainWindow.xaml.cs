@@ -27,14 +27,28 @@ namespace SupplierRatingPrediction_UI
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            Dashboard dashboardPage = new Dashboard();
-            dashboardPage.Show();
-            this.Close();
+            if (!string.IsNullOrEmpty(txtUserName.Text) && !string.IsNullOrEmpty(txtPassword.Password))
+            {
+                if (txtUserName.Text == "admin" && txtPassword.Password == "admin")
+                {
+                    Dashboard dashboardPage = new Dashboard();
+                    dashboardPage.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid username or password.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid username or password.");
+            }
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }
