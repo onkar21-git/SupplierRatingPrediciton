@@ -6,6 +6,7 @@
         WindowState="Maximized"
         xmlns:local="clr-namespace:SupplierRatingPrediction_UI"
         mc:Ignorable="d"
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
         Title="Dashboard" Height="auto" Width="auto">
     <Window.Resources>
@@ -202,6 +203,11 @@
                         Grid.Column="1" 
                         Margin="5,40,0,0" />
                     </Grid>
+                        
+                            <m:Map x:Name="myMap" CredentialsProvider="Aun_T-SzUzu6RhXts7bR0ecANUU-cIYVA9PkE-USOimHgphne7ApjkpwhI4RKPHY" 
+                                   Mode="AerialWithLabels" Center="16.7050,74.2433" ZoomLevel="10" 
+               Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="1" Width="600" Margin="10,20,0,0"/>
+                        
                     </StackPanel>
                 </Grid>
             </Grid>
