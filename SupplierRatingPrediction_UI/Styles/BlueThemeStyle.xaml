@@ -18,6 +18,7 @@
     <Style TargetType="{x:Type TextBlock}">
         <Setter Property="Foreground" Value="{StaticResource infoBox_brush}"></Setter>
         <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontFamily" Value="Verdana"/>
     </Style>
     <Style TargetType="{x:Type Button}"> <!-- General for all buttons -->
         <Setter Property="Foreground"
@@ -29,7 +30,7 @@
         <Setter Property="FontWeight"
                 Value="Bold" />
         <Setter Property="MinWidth"
-                Value="100"></Setter>
+                Value="80"></Setter>
         <Setter Property="MinHeight"
                 Value="45"></Setter>
         <Setter Property="Margin"
@@ -39,9 +40,9 @@
         <Setter Property="Background">
             <Setter.Value>
                 <RadialGradientBrush>
-                    <GradientStop Color="#145082"
-                                  Offset="0" />
                     <GradientStop Color="Black"
+                                  Offset="0" />
+                    <GradientStop Color="LightSkyBlue"
                                   Offset="1" />
                 </RadialGradientBrush>
             </Setter.Value>

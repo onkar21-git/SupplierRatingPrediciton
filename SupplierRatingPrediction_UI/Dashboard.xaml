@@ -58,15 +58,22 @@
             </Grid>
 
             <Grid Grid.Row="1" Height="650" Width="1400">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="2*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
                 <Grid Name="InputParametersGrid" 
                       HorizontalAlignment="Left" 
                       Margin="0,20,0,0" 
+                      Width="450"
                       Background="Black">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
@@ -80,69 +87,94 @@
                            Grid.Row="0" 
                            Grid.Column="0" 
                            Margin="0,50,0,0"
-                           Padding="10"
-                           FontSize="25"/>
-                    <TextBlock Text="Order Amount" 
+                           Padding="5"
+                           FontSize="18"/>
+                    <TextBlock Text="MF Process" 
                            Grid.Row="1" 
                            Grid.Column="0" 
-                           Padding="10"
-                           FontSize="25"/>
+                           Padding="5"
+                           FontSize="18"/>
                     <TextBlock Text="Volume" 
                            Grid.Row="2" 
                            Grid.Column="0" 
-                           Padding="10"                               
-                           FontSize="25"/>
-                    <TextBox x:Name="txtCommodity"
+                           Padding="5"                               
+                           FontSize="18"/>
+                    <TextBlock Text="Order Amount" 
+                           Grid.Row="3" 
+                           Grid.Column="0" 
+                           Padding="5"
+                           FontSize="18"/>
+                    
+                    
+                    <ComboBox x:Name="cmbCommodity"
                          Grid.Row="0"
                          Grid.Column="1" 
                          MinHeight="5"
                          MinWidth="200"
-                         Margin="10,60,10,10"
-                         FontSize="25"/>
-                    <TextBox x:Name="txtOrderAmount"
-                         Grid.Row="1"
+                         Margin="5,50,5,5"
+                         FontSize="20"/>
+                    <ComboBox Name="cmbMPProcess" 
+                              Grid.Row="1"
                          Grid.Column="1" 
                          MinHeight="5"
                          MinWidth="200"
-                         Margin="10" 
-                         FontSize="25"/>
+                         Margin="5" 
+                         FontSize="20"></ComboBox>
                     <TextBox x:Name="txtVolume"
                          Grid.Row="2"
                          Grid.Column="1" 
                          MinHeight="5"
                          MinWidth="200"
-                         Margin="10" 
-                         FontSize="25"/>
+                         Margin="5" 
+                         FontSize="20"/>
+                    <TextBox x:Name="txtOrderAmount"
+                         Grid.Row="3"
+                         Grid.Column="1" 
+                         MinHeight="5"
+                         MinWidth="200"
+                         Margin="5" 
+                         FontSize="20"/>
+                    
+                    
                     <Button x:Name="btnPredict"
                         Content="Predict Rating"
-                        Grid.Row="3"
+                        Grid.Row="4"
                         Grid.Column="0" 
-                        Margin="0,40,5,0" />
+                        Margin="5,40,5,0" />
                     <Button Name="btnClose"
                         Content="Clear"
-                        Grid.Row="3"
+                        Grid.Row="4"
                         Grid.Column="1" 
+                            Width="200"
                         Margin="5,40,0,0" />
-                </Grid>
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Grid Name="barChartGrid" Margin="0,20,0,0">
+                </Grid>                
+                <Grid Name="barChartGrid" Grid.Column="1" Margin="0,20,0,0" Width="auto">
                         <chartingToolkit:Chart Name="barChart" Title="Bar Series Demo" 
-                                               VerticalAlignment="Top" 
+                                               VerticalAlignment="Top"
                                                Height="300">
+                            <!--<chartingToolkit:Chart.LayoutTransform>
+                                <RotateTransform CenterX="0.5" CenterY="0.5" Angle="270"/>
+                            </chartingToolkit:Chart.LayoutTransform>-->
                             <chartingToolkit:BarSeries  DependentValuePath="Value" 
                                                         IndependentValuePath="Key" 
                                                         ItemsSource="{Binding}"
                                                         SelectionChanged="barChart_SelectionChanged"
-                                IsSelectionEnabled="True"/>
+                                IsSelectionEnabled="True">
+                                
+                                
+                            </chartingToolkit:BarSeries>
                         </chartingToolkit:Chart>
-                    </Grid>
-                    <StackPanel Grid.Row="1" Orientation="Horizontal">
-                        <Grid Name="DetailsGrid" 
+                </Grid> 
+               
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Name="DetailsGrid" 
                       HorizontalAlignment="Left" 
+                          Width="700"
                       Margin="0,20,0,0" 
                       Background="Black">
                         <Grid.RowDefinitions>
@@ -150,65 +182,50 @@
                             <RowDefinition Height="auto"></RowDefinition>
                             <RowDefinition Height="auto"></RowDefinition>
                             <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Commodity" 
+                        <TextBlock Text="Supplier Name:" 
+                           HorizontalAlignment="Right"
                            Grid.Row="0" 
                            Grid.Column="0" 
-                           Margin="0,50,0,0"
-                           Padding="10"
-                           FontSize="25"/>
-                        <TextBlock Text="Order Amount" 
+                           Margin="0,20,0,0"
+                           Padding="5"
+                           FontSize="18"/>
+                        <TextBlock Text="Address:" 
+                           HorizontalAlignment="Right"
                            Grid.Row="1" 
                            Grid.Column="0" 
-                           Padding="10"
-                           FontSize="25"/>
-                        <TextBlock Text="Volume" 
+                           Padding="5"
+                           FontSize="18"/>
+                        <TextBlock Text="Years of relationship:"
+                           HorizontalAlignment="Right"
                            Grid.Row="2" 
                            Grid.Column="0" 
-                           Padding="10"                               
-                           FontSize="25"/>
-                        <TextBox x:Name="atxtCommodity"
-                         Grid.Row="0"
-                         Grid.Column="1" 
-                         MinHeight="5"
-                         MinWidth="200"
-                         Margin="10,60,10,10"
-                         FontSize="25"/>
-                        <TextBox x:Name="atxtOrderAmount"
-                         Grid.Row="1"
-                         Grid.Column="1" 
-                         MinHeight="5"
-                         MinWidth="200"
-                         Margin="10" 
-                         FontSize="25"/>
-                        <TextBox x:Name="atxtVolume"
-                         Grid.Row="2"
-                         Grid.Column="1" 
-                         MinHeight="5"
-                         MinWidth="200"
-                         Margin="10" 
-                         FontSize="25"/>
-                        <Button x:Name="abtnPredict"
-                        Content="Predict Rating"
-                        Grid.Row="3"
-                        Grid.Column="0" 
-                        Margin="0,40,5,0" />
-                        <Button Name="abtnClose"
-                        Content="Clear"
-                        Grid.Row="3"
-                        Grid.Column="1" 
-                        Margin="5,40,0,0" />
+                           Padding="5"                               
+                           FontSize="18"/>
+                        <TextBlock Text="Lead time:" 
+                           HorizontalAlignment="Right"        
+                           Grid.Row="3" 
+                           Grid.Column="0" 
+                           Padding="5"
+                           FontSize="18"/>
+                        <TextBlock Text="Supplier size:" 
+                           HorizontalAlignment="Right"        
+                           Grid.Row="4" 
+                           Grid.Column="0" 
+                           Padding="5"
+                           FontSize="18"/>
+
                     </Grid>
-                        
-                            <m:Map x:Name="myMap" CredentialsProvider="Aun_T-SzUzu6RhXts7bR0ecANUU-cIYVA9PkE-USOimHgphne7ApjkpwhI4RKPHY" 
-                                   Mode="AerialWithLabels" Center="16.7050,74.2433" ZoomLevel="10" 
-               Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="1" Width="600" Margin="10,20,0,0"/>
-                        
-                    </StackPanel>
+                    <m:Map x:Name="myMap" CredentialsProvider="Aun_T-SzUzu6RhXts7bR0ecANUU-cIYVA9PkE-USOimHgphne7ApjkpwhI4RKPHY" 
+                                   Mode="Road" Center="19.0760,72.8777" ZoomLevel="11" 
+               Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" Width="auto" Margin="10,20,0,0"/>
+                
+
                 </Grid>
             </Grid>
         </Grid>

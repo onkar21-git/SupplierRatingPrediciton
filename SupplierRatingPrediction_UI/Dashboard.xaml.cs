@@ -23,6 +23,16 @@ namespace SupplierRatingPrediction_UI
         {
             InitializeComponent();
             showColumnChart();
+            LoadComboBoxes();
+        }
+
+        private void LoadComboBoxes()
+        {
+            cmbCommodity.ItemsSource = new List<string> { "Casting", "Sheet Metal", "Tube" };
+            cmbMPProcess.ItemsSource = new List<string> { "Pressing", "CNC Machining", "Tube Forming",
+                                                          "VMC Machining", "Sleeve Manufacturing", "Heat Treatment",
+                                                          "Wire Manufacturing","Coiling", "Rubber Oring Manufacturing",
+                                                          "Draw"};
         }
 
         private void showColumnChart()

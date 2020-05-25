@@ -15,7 +15,7 @@
                 <ImageBrush ImageSource="{StaticResource winBackground}" Stretch="Fill"/>
             </Canvas.Background>
         </Canvas>
-        <Border x:Name="brdrMain">
+        <Border x:Name="brdrMain" Background="Black">
             <Border.Style>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10" />
