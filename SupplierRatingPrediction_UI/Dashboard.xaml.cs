@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,11 +21,33 @@ namespace SupplierRatingPrediction_UI
     /// </summary>
     public partial class Dashboard : Window
     {
+        public SeriesCollection SeriesCollection { get; set; }
+        public string[] Labels { get; set; }
+        public Func<double, string> Formatter { get; set; }
+
+        public Func<ChartPoint, string> PointLabel { get; set; }
+
         public Dashboard()
         {
             InitializeComponent();
             showColumnChart();
             LoadComboBoxes();
+
+            SeriesCollection = new SeriesCollection
+            {
+                new ColumnSeries
+                {
+                    Title = "2015",
+                    Values = new ChartValues<double> { 10, 50, 39, 50 }
+                }
+            };
+            Labels = new[] { "Maria", "Susan", "Charles", "Frida" }; // supplier Names
+            //Formatter = value => value.ToString("N");
+
+
+            PointLabel = chartPoint =>
+                string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+            DataContext = this;
         }
 
         private void LoadComboBoxes()
@@ -43,7 +67,7 @@ namespace SupplierRatingPrediction_UI
             valueList.Add(new KeyValuePair<string, int>("Tester", 50));
             valueList.Add(new KeyValuePair<string, int>("QA", 30));
             valueList.Add(new KeyValuePair<string, int>("Project Manager", 40));
-            barChart.DataContext = valueList;
+            //barChart.DataContext = valueList;
         }
 
 
@@ -51,7 +75,11 @@ namespace SupplierRatingPrediction_UI
         {
             //string selectedItem = e.Source[0];
             //string[] abc = selectedItem.Split('=');
+//            ((System.Collections.Generic.KeyValuePair<string, int>)((System.Windows.Controls.DataVisualization.Charting.DataPointSeries)e.Source).SelectedItem).Key
+//((System.Collections.Generic.KeyValuePair<string, int>)((System.Windows.Controls.DataVisualization.Charting.DataPointSeries)e.Source).SelectedItem).Value
         }
+
+        
 
     }
 }

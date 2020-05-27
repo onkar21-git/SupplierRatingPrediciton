@@ -4,16 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         WindowState="Maximized"
-        xmlns:local="clr-namespace:SupplierRatingPrediction_UI"
         mc:Ignorable="d"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         Title="Dashboard" Height="auto" Width="auto">
     <Window.Resources>
         <ResourceDictionary Source="Styles\BlueThemeStyle.xaml"/>
 
     </Window.Resources>
+    
     <Grid>
+        
         <Canvas>
             <Canvas.Background>
                 <ImageBrush ImageSource="{StaticResource winBackground}" Stretch="Fill"/>
@@ -33,8 +36,9 @@
                                   Color="#FFF4BA9A"
                                   BlurRadius="15"></DropShadowEffect>
             </Border.Effect>
+            
         </Border>
-        <Grid x:Name="grdLogin"   
+        <Grid x:Name="mainGrid"   
               HorizontalAlignment="Center"
               VerticalAlignment="Center"
               Margin="20">
@@ -147,24 +151,38 @@
                         Grid.Column="1" 
                             Width="200"
                         Margin="5,40,0,0" />
-                </Grid>                
+                </Grid>
                 <Grid Name="barChartGrid" Grid.Column="1" Margin="0,20,0,0" Width="auto">
-                        <chartingToolkit:Chart Name="barChart" Title="Bar Series Demo" 
-                                               VerticalAlignment="Top"
-                                               Height="300">
-                            <!--<chartingToolkit:Chart.LayoutTransform>
-                                <RotateTransform CenterX="0.5" CenterY="0.5" Angle="270"/>
-                            </chartingToolkit:Chart.LayoutTransform>-->
-                            <chartingToolkit:BarSeries  DependentValuePath="Value" 
-                                                        IndependentValuePath="Key" 
-                                                        ItemsSource="{Binding}"
-                                                        SelectionChanged="barChart_SelectionChanged"
-                                IsSelectionEnabled="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                        <lvc:CartesianChart Name="barChart" Series="{Binding SeriesCollection}" LegendLocation="Top" Foreground="Black" Background="LightPink">
                                 
-                                
-                            </chartingToolkit:BarSeries>
-                        </chartingToolkit:Chart>
-                </Grid> 
+                                <lvc:CartesianChart.AxisX>
+                                <lvc:Axis Title="Salesman" Labels="{Binding Labels}" Foreground="Black"></lvc:Axis>
+                            </lvc:CartesianChart.AxisX>
+                            <lvc:CartesianChart.AxisY>
+                                <lvc:Axis Title="Sold Apps" LabelFormatter="{Binding Formatter}" Foreground="Black"></lvc:Axis>
+                            </lvc:CartesianChart.AxisY>
+                        </lvc:CartesianChart>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <lvc:PieChart LegendLocation="Bottom" Hoverable="False" DataTooltip="{x:Null}">
+                                <lvc:PieChart.Series>
+                                    <lvc:PieSeries Title="Maria" Values="3" DataLabels="True"
+                               LabelPoint="{Binding PointLabel}"/>
+                                    <lvc:PieSeries Title="Charles" Values="4" DataLabels="True" 
+                               LabelPoint="{Binding PointLabel}"/>
+                                    <lvc:PieSeries Title="Frida" Values="6" DataLabels="True" 
+                               LabelPoint="{Binding PointLabel}"/>
+                                    <lvc:PieSeries Title="Frederic" Values="2" DataLabels="True" 
+                               LabelPoint="{Binding PointLabel}"/>
+                                </lvc:PieChart.Series>
+                            </lvc:PieChart>
+                        </Grid>
+                 </Grid> 
                
                 </Grid>
                 <Grid Grid.Row="1">
