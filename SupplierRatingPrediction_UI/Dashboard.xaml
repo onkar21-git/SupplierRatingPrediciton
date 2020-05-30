@@ -144,7 +144,8 @@
                         Content="Predict Rating"
                         Grid.Row="4"
                         Grid.Column="0" 
-                        Margin="5,40,5,0" />
+                        Margin="5,40,5,0"
+                        Click="btnPredict_Click"/>
                     <Button Name="btnClose"
                         Content="Clear"
                         Grid.Row="4"

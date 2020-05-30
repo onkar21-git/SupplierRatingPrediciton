@@ -1,5 +1,6 @@
 ﻿using LiveCharts;
 using LiveCharts.Wpf;
+using SupplierRatingPredictionML.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,7 +80,11 @@ namespace SupplierRatingPrediction_UI
 //((System.Collections.Generic.KeyValuePair<string, int>)((System.Windows.Controls.DataVisualization.Charting.DataPointSeries)e.Source).SelectedItem).Value
         }
 
-        
-
+        private void btnPredict_Click(object sender, RoutedEventArgs e)
+        {
+            List<SupplierData> predictedSuppliers = new List<SupplierData>();
+            predictedSuppliers = ConsumeModel.Predict((cmbCommodity.SelectedIndex + 1).ToString(), 
+                txtVolume.Text, cmbMPProcess.SelectedItem.ToString());
+        }
     }
 }

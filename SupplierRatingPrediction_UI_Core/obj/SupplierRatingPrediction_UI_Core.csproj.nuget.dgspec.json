@@ -1,0 +1,150 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction_GIT\\SupplierRatingPrediction_UI_Core\\SupplierRatingPrediction_UI_Core.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction_GIT\\SupplierRatingPredictionML.Model\\SupplierRatingPredictionML.Model.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction_GIT\\SupplierRatingPredictionML.Model\\SupplierRatingPredictionML.Model.csproj",
+        "projectName": "SupplierRatingPredictionML.Model",
+        "projectPath": "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction_GIT\\SupplierRatingPredictionML.Model\\SupplierRatingPredictionML.Model.csproj",
+        "packagesPath": "C:\\Users\\walavonk\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction_GIT\\SupplierRatingPredictionML.Model\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\walavonk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Microsoft.ML": {
+              "target": "Package",
+              "version": "[1.5.0, )"
+            },
+            "Microsoft.ML.DataView": {
+              "target": "Package",
+              "version": "[1.5.0, )"
+            },
+            "Microsoft.ML.LightGBM": {
+              "target": "Package",
+              "version": "[1.5.0, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction_GIT\\SupplierRatingPrediction_UI_Core\\SupplierRatingPrediction_UI_Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction_GIT\\SupplierRatingPrediction_UI_Core\\SupplierRatingPrediction_UI_Core.csproj",
+        "projectName": "SupplierRatingPrediction_UI_Core",
+        "projectPath": "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction_GIT\\SupplierRatingPrediction_UI_Core\\SupplierRatingPrediction_UI_Core.csproj",
+        "packagesPath": "C:\\Users\\walavonk\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction_GIT\\SupplierRatingPrediction_UI_Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\walavonk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction_GIT\\SupplierRatingPredictionML.Model\\SupplierRatingPredictionML.Model.csproj": {
+                "projectPath": "C:\\Users\\walavonk\\Desktop\\AI_Project\\SourceCodeMain\\SupplierRatingPrediction_GIT\\SupplierRatingPredictionML.Model\\SupplierRatingPredictionML.Model.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "LiveCharts.Wpf": {
+              "target": "Package",
+              "version": "[0.9.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

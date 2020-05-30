@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using Microsoft.ML;
@@ -27,6 +28,50 @@ namespace SupplierRatingPredictionML.Model
             // Use model to make prediction on input data
             ModelOutput result = predEngine.Predict(input);
             return result;
+        }
+        /// <summary>
+        /// Created By Onkar as wrapper for auto generated Predict method
+        /// </summary>
+        /// <returns></returns>
+        public static List<SupplierData> Predict(string commodity, string volume, string MFProcess)
+        {
+            List<SupplierData> predictedSuppliers = new List<SupplierData>();
+            List<string> supplierList = GetShortlistedSuppliers(commodity);
+            foreach (string supplierId in supplierList)
+            {
+
+                ModelInput input = new ModelInput();
+                input.Supplier = float.Parse(supplierId);
+                input.Volume = float.Parse(volume);
+                input.Commodity = float.Parse(commodity);
+                var predictionResult = Predict(input);
+                float predicted = predictionResult.Score;
+
+                SupplierData supplierPredictedData = new SupplierData();
+                supplierPredictedData.SupplierName = supplierId;
+                supplierPredictedData.predicted_C = Convert.ToInt32(predicted);
+
+                predictedSuppliers.Add(supplierPredictedData);
+            }
+
+            return predictedSuppliers;
+        }
+
+        private static List<string> GetShortlistedSuppliers(string commodity)
+        {
+            List<string> supplierList = new List<string>();
+            SqlConnection conn = new SqlConnection("Data Source=WL353156\\SQLEXPRESS ;Initial Catalog=OrderSupplierDB;Integrated Security=True");
+            conn.Open();
+            //Get all suppliers who have commodity
+            SqlCommand cmd = new SqlCommand("select distinct(supplier) from tb_OrderRating where Commodity =" + commodity, conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                supplierList.Add(reader["supplier"].ToString());
+            }
+            conn.Close();
+
+            return supplierList;
         }
     }
 }

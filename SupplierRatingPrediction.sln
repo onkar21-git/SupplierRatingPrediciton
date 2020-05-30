@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SupplierRatingPredictionML.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupplierRatingPrediction_UI", "SupplierRatingPrediction_UI\SupplierRatingPrediction_UI.csproj", "{6AFB5A32-0479-4A6B-B6A7-16A4F8A41BBB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupplierRatingPrediction_UI_Core", "SupplierRatingPrediction_UI_Core\SupplierRatingPrediction_UI_Core.csproj", "{01012A5C-5486-48C5-AFEA-FF66935C5B2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6AFB5A32-0479-4A6B-B6A7-16A4F8A41BBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AFB5A32-0479-4A6B-B6A7-16A4F8A41BBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AFB5A32-0479-4A6B-B6A7-16A4F8A41BBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01012A5C-5486-48C5-AFEA-FF66935C5B2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01012A5C-5486-48C5-AFEA-FF66935C5B2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01012A5C-5486-48C5-AFEA-FF66935C5B2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01012A5C-5486-48C5-AFEA-FF66935C5B2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
