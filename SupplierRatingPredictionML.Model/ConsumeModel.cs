@@ -21,7 +21,7 @@ namespace SupplierRatingPredictionML.Model
             MLContext mlContext = new MLContext();
 
             // Load model & create prediction engine
-            string modelPath = @"C:\Users\walavonk\AppData\Local\Temp\MLVSTools\SupplierRatingPredictionML\SupplierRatingPredictionML.Model\MLModel.zip";
+            string modelPath = @"C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\Data\MLModel.zip";
             ITransformer mlModel = mlContext.Model.Load(modelPath, out var modelInputSchema);
             var predEngine = mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(mlModel);
 
@@ -35,39 +35,49 @@ namespace SupplierRatingPredictionML.Model
         /// <returns></returns>
         public static List<SupplierData> Predict(string commodity, string volume, string MFProcess)
         {
-            List<SupplierData> predictedSuppliers = new List<SupplierData>();
-            List<string> supplierList = GetShortlistedSuppliers(commodity);
-            foreach (string supplierId in supplierList)
+            //List<SupplierData> predictedSuppliers = new List<SupplierData>();
+            List<SupplierData> supplierList = GetShortlistedSuppliers(commodity);
+            
+            foreach (SupplierData supplier in supplierList)
             {
 
                 ModelInput input = new ModelInput();
-                input.Supplier = float.Parse(supplierId);
+                input.Supplier = float.Parse(supplier.SupplierId.ToString());
                 input.Volume = float.Parse(volume);
                 input.Commodity = float.Parse(commodity);
                 var predictionResult = Predict(input);
                 float predicted = predictionResult.Score;
+                supplier.predicted_Total = Convert.ToInt32(predicted);
 
-                SupplierData supplierPredictedData = new SupplierData();
-                supplierPredictedData.SupplierName = supplierId;
-                supplierPredictedData.predicted_C = Convert.ToInt32(predicted);
-
-                predictedSuppliers.Add(supplierPredictedData);
             }
 
-            return predictedSuppliers;
+            return supplierList;
         }
 
-        private static List<string> GetShortlistedSuppliers(string commodity)
+        private static List<SupplierData> GetShortlistedSuppliers(string commodity)
         {
-            List<string> supplierList = new List<string>();
+            List<SupplierData> supplierList = new List<SupplierData>();
             SqlConnection conn = new SqlConnection("Data Source=WL353156\\SQLEXPRESS ;Initial Catalog=OrderSupplierDB;Integrated Security=True");
             conn.Open();
             //Get all suppliers who have commodity
-            SqlCommand cmd = new SqlCommand("select distinct(supplier) from tb_OrderRating where Commodity =" + commodity, conn);
+            SqlCommand cmd = new SqlCommand(@"select distinct(supplier), s.Supplier_Name , s.Supplier_Business_Yrs, 
+                                              s.Supplier_Id, s.Supplier_Lead_Time,
+                                              s.Supplier_Location, s.Supplier_Size , s.Supplier_Address
+                                              from tb_OrderRating o, 
+                                              tb_Supplier s where o.Supplier = s.Supplier_Id and Commodity = " + commodity, conn);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                supplierList.Add(reader["supplier"].ToString());
+                SupplierData supplier = new SupplierData();
+                supplier.SupplierId = Int32.Parse(reader["supplier"].ToString());
+                supplier.SupplierName = reader["Supplier_Name"].ToString();
+                supplier.Supplier_Address = reader["Supplier_Address"].ToString();
+                supplier.Supplier_Business_Yrs = reader["Supplier_Business_Yrs"].ToString();
+                supplier.Supplier_Lead_Time = reader["Supplier_Lead_Time"].ToString();
+                supplier.Supplier_Location = reader["Supplier_Location"].ToString();
+                supplier.Supplier_Size = reader["Supplier_Size"].ToString();
+
+                supplierList.Add(supplier);
             }
             conn.Close();
 

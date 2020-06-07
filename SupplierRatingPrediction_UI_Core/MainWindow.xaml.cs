@@ -22,6 +22,7 @@ namespace SupplierRatingPrediction_UI_Core
     {
         public MainWindow()
         {
+            
             InitializeComponent();
         }
 

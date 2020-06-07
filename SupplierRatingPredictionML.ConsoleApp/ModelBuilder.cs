@@ -12,8 +12,8 @@ namespace SupplierRatingPredictionML.ConsoleApp
 {
     public static class ModelBuilder
     {
-        private static string TRAIN_DATA_FILEPATH = @"C:\Users\walavonk\AppData\Local\Temp\4965993c-ef66-414f-9335-bd279a1c358b.tsv";
-        private static string MODEL_FILEPATH = @"C:\Users\walavonk\AppData\Local\Temp\MLVSTools\SupplierRatingPredictionML\SupplierRatingPredictionML.Model\MLModel.zip";
+        private static string TRAIN_DATA_FILEPATH = @"C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\Data\4965993c-ef66-414f-9335-bd279a1c358b.tsv";
+        private static string MODEL_FILEPATH = @"C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\Data\MLModel.zip";
         // Create MLContext to be shared across the model creation workflow objects 
         // Set a random seed for repeatable/deterministic results across multiple trainings.
         private static MLContext mlContext = new MLContext(seed: 1);

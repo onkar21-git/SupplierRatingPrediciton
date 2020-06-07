@@ -26,27 +26,14 @@ namespace SupplierRatingPrediction_UI_Core
 
         public Func<ChartPoint, string> PointLabel { get; set; }
 
+        List<SupplierData> predictedSuppliers = new List<SupplierData>();
+
         public Dashboard()
         {
             InitializeComponent();
-            showColumnChart();
+            //List<SupplierData> predictedSuppliers = new List<SupplierData>();
+            ShowColumnChart();
             LoadComboBoxes();
-
-            SeriesCollection = new SeriesCollection
-            {
-                new ColumnSeries
-                {
-                    Title = "2015",
-                    Values = new ChartValues<double> { 10, 50, 39, 50 }
-                }
-            };
-            Labels = new[] { "Maria", "Susan", "Charles", "Frida" }; // supplier Names
-            //Formatter = value => value.ToString("N");
-
-
-            PointLabel = chartPoint =>
-                string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
-            DataContext = this;
         }
 
         private void LoadComboBoxes()
@@ -58,14 +45,34 @@ namespace SupplierRatingPrediction_UI_Core
                                                           "Draw"};
         }
 
-        private void showColumnChart()
+        private void ShowColumnChart()
         {
-            List<KeyValuePair<string, int>> valueList = new List<KeyValuePair<string, int>>();
-            valueList.Add(new KeyValuePair<string, int>("Developer", 60));
-            valueList.Add(new KeyValuePair<string, int>("Misc", 20));
-            valueList.Add(new KeyValuePair<string, int>("Tester", 50));
-            valueList.Add(new KeyValuePair<string, int>("QA", 30));
-            valueList.Add(new KeyValuePair<string, int>("Project Manager", 40));
+            ChartValues<int> valueList = new ChartValues<int>();
+            List<string> supplierList = new List<string>();
+
+            foreach (SupplierData item in predictedSuppliers)
+            {
+                valueList.Add(item.predicted_Total);
+                supplierList.Add(item.SupplierName);
+            }
+
+            SeriesCollection = new SeriesCollection
+            {
+                new ColumnSeries
+                {
+                    Title = "Supplier Predicted Rating",
+                    Values = valueList
+                }
+            };
+            Labels = supplierList.ToArray(); // supplier Names
+            //Formatter = value => value.ToString("N");
+
+            //Pie chart data
+            PointLabel = chartPoint =>
+                string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+            DataContext = null;
+            DataContext = this;
+
             //barChart.DataContext = valueList;
         }
 
@@ -80,9 +87,67 @@ namespace SupplierRatingPrediction_UI_Core
 
         private void btnPredict_Click(object sender, RoutedEventArgs e)
         {
-            List<SupplierData> predictedSuppliers = new List<SupplierData>();
+
             predictedSuppliers = ConsumeModel.Predict((cmbCommodity.SelectedIndex + 1).ToString(),
                 txtVolume.Text, cmbMPProcess.SelectedItem.ToString());
+
+            ShowColumnChart();
+        }
+
+        private void barChart_DataClick(object sender, ChartPoint chartPoint)
+        {
+            //MessageBox.Show("You clicked " + chartPoint.X + ", " + chartPoint.Y);
+            //MessageBox.Show("Supplier name clicked - " + predictedSuppliers[Convert.ToInt32(chartPoint.X)].SupplierName);
+
+            ShowSelectedSupplierDetails(predictedSuppliers[Convert.ToInt32(chartPoint.X)]);
+        }
+
+        private void ShowSelectedSupplierDetails(SupplierData supplierData)
+        {
+            lblSupplierName.Text = supplierData.SupplierName;
+            lblSupplierAddress.Text = supplierData.Supplier_Address;
+            lblYearsOfRelationship.Text = supplierData.Supplier_Business_Yrs;
+            lblLeadTime.Text = supplierData.Supplier_Lead_Time;
+            lblSupplierSize.Text = supplierData.Supplier_Size;
+
+            double latitude = Double.Parse(supplierData.Supplier_Location.Split(',')[0]);
+            double longitude = Double.Parse(supplierData.Supplier_Location.Split(',')[1]);
+            myMap.Center = new Microsoft.Maps.MapControl.WPF.Location(latitude, longitude);
+
+            supplierData.predicted_Q = 40;
+            supplierData.predicted_C = 35;
+            supplierData.predicted_D = 4;
+            ShowPieChartData(supplierData.predicted_Q, supplierData.predicted_C, supplierData.predicted_D);
+        }
+
+        private void ShowPieChartData(int predicted_Q, int predicted_C, int predicted_D)
+        {
+            pieChart1.Series = new SeriesCollection
+            {
+                new PieSeries
+                {
+                    Title = "Predicted Q",
+                    Values = new ChartValues<double> {predicted_Q},
+                    //PushOut = 15,
+                    DataLabels = true,
+                    LabelPoint = PointLabel
+                },
+                new PieSeries
+                {
+                    Title = "Predicted C",
+                    Values = new ChartValues<double> {predicted_C},
+                    DataLabels = true,
+                    LabelPoint = PointLabel
+                },
+                new PieSeries
+                {
+                    Title = "Predicted D",
+                    Values = new ChartValues<double> {predicted_D},
+                    DataLabels = true,
+                    LabelPoint = PointLabel
+                }
+            };
+
         }
     }
 }

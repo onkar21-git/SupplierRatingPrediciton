@@ -159,8 +159,7 @@
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0">
-                        <lvc:CartesianChart Name="barChart" Series="{Binding SeriesCollection}" LegendLocation="Top" Foreground="Black" Background="LightPink">
-                                
+                        <lvc:CartesianChart Name="barChart" Series="{Binding SeriesCollection}" LegendLocation="Top" Foreground="Black" Background="LightPink">                                
                                 <lvc:CartesianChart.AxisX>
                                 <lvc:Axis Title="Salesman" Labels="{Binding Labels}" Foreground="Black"></lvc:Axis>
                             </lvc:CartesianChart.AxisX>
