@@ -15,10 +15,10 @@ namespace SupplierRatingPredictionML.ConsoleApp
             ModelBuilder.CreateModel();
             // Create single instance of sample data from first line of dataset for model input
             ModelInput sampleData = new ModelInput();
-            sampleData.Commodity = 3;
-            sampleData.Order_Amount = 70000;
-            sampleData.Supplier = 11;
-            sampleData.Volume = 10400;
+            sampleData.Commodity = 1;
+            sampleData.Supplier = 4;
+            sampleData.Manufacturing_Process = 1;
+            sampleData.Volume = 12345;
             var predictionResult = ConsumeModel.Predict(sampleData);
             float predicted = predictionResult.Score;
         }

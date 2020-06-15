@@ -26,7 +26,7 @@ namespace SupplierRatingPredictionML.Model
         public float Commodity { get; set; }
 
 
-        [ColumnName("Manufacturing_Process"), LoadColumn(5)]
+        [ColumnName("Manufacturing_Process_Id"), LoadColumn(5)]
         public float Manufacturing_Process { get; set; }
 
 

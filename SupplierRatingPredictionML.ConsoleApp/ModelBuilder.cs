@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using Microsoft.ML;
@@ -12,7 +13,7 @@ namespace SupplierRatingPredictionML.ConsoleApp
 {
     public static class ModelBuilder
     {
-        private static string TRAIN_DATA_FILEPATH = @"C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\Data\4965993c-ef66-414f-9335-bd279a1c358b.tsv";
+        //private static string TRAIN_DATA_FILEPATH = @"C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\Data\4965993c-ef66-414f-9335-bd279a1c358b.tsv";
         private static string MODEL_FILEPATH = @"C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\Data\MLModel.zip";
         // Create MLContext to be shared across the model creation workflow objects 
         // Set a random seed for repeatable/deterministic results across multiple trainings.
@@ -20,13 +21,16 @@ namespace SupplierRatingPredictionML.ConsoleApp
 
         public static void CreateModel()
         {
+            List<OrderData>  orderData = GetData();
             // Load Data
-            IDataView trainingDataView = mlContext.Data.LoadFromTextFile<ModelInput>(
-                                            path: TRAIN_DATA_FILEPATH,
-                                            hasHeader: true,
-                                            separatorChar: '\t',
-                                            allowQuoting: true,
-                                            allowSparse: false);
+            //IDataView trainingDataView = mlContext.Data.LoadFromTextFile<ModelInput>(
+            //                                path: TRAIN_DATA_FILEPATH,
+            //                                hasHeader: true,
+            //                                separatorChar: '\t',
+            //                                allowQuoting: true,
+            //                                allowSparse: false);
+
+            IDataView trainingDataView = mlContext.Data.LoadFromEnumerable(orderData);
 
             // Build training pipeline
             IEstimator<ITransformer> trainingPipeline = BuildTrainingPipeline(mlContext);
@@ -41,10 +45,48 @@ namespace SupplierRatingPredictionML.ConsoleApp
             SaveModel(mlContext, mlModel, MODEL_FILEPATH, trainingDataView.Schema);
         }
 
+        private static List<OrderData> GetData()
+        {
+
+            List<OrderData> orderList = new List<OrderData>();
+            SqlConnection conn = new SqlConnection("Data Source=WL353156\\SQLEXPRESS ;Initial Catalog=OrderSupplierDB;Integrated Security=True");
+            conn.Open();
+            //Get all suppliers who have commodity
+            SqlCommand cmd = new SqlCommand(@"select Order_Id,Commodity,Volume,Supplier,mp.Manufacturing_Process_Id, 
+                                              Quality_Rating,Cost_Rating,Delivery_Rating,Total_Rating from tb_OrderRating, tb_Order_MPProcess mp
+                                              where mp.OrderId = Order_Id order by Order_Id",conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                OrderData order = new OrderData();
+                order.Order_Id = Int32.Parse(reader["Order_Id"].ToString());
+                order.Commodity = Int32.Parse(reader["Commodity"].ToString());
+                order.Volume = Int32.Parse(reader["Volume"].ToString());
+                order.Supplier = Int32.Parse(reader["Supplier"].ToString());
+                order.Manufacturing_Process_Id = Int32.Parse(reader["Manufacturing_Process_Id"].ToString());
+                order.Quality_Rating = Int32.Parse(reader["Quality_Rating"].ToString());
+                order.Cost_Rating = Int32.Parse(reader["Cost_Rating"].ToString());
+                order.Delivery_Rating = Int32.Parse(reader["Delivery_Rating"].ToString());
+                order.Total_Rating = Int32.Parse(reader["Total_Rating"].ToString());
+
+                orderList.Add(order);
+            }
+            conn.Close();
+
+            return orderList;
+
+        }
+
         public static IEstimator<ITransformer> BuildTrainingPipeline(MLContext mlContext)
         {
             // Data process configuration with pipeline data transformations 
-            var dataProcessPipeline = mlContext.Transforms.Concatenate("Features", new[] { "Order_Year", "Order_Month", "Order_Day", "Commodity", "Volume", "Supplier", "Order_Amount" });
+            var dataProcessPipeline = mlContext.Transforms.Categorical.OneHotEncoding(new[]
+            {
+                new InputOutputColumnPair("Commodity"),
+                new InputOutputColumnPair("Manufacturing_Process_Id"),
+                new InputOutputColumnPair("Supplier")
+            })
+                .Append(mlContext.Transforms.Concatenate("Features", "Volume", "Commodity", "Manufacturing_Process_Id", "Supplier"));
             // Set the training algorithm 
             var trainer = mlContext.Regression.Trainers.LightGbm(labelColumnName: "Total_Rating", featureColumnName: "Features");
 
