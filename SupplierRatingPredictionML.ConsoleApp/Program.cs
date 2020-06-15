@@ -12,15 +12,18 @@ namespace SupplierRatingPredictionML.ConsoleApp
     {
         static void Main(string[] args)
         {
-            ModelBuilder.CreateModel();
+            //ModelBuilder.CreateModel();
+            Q_ModelBuilder.CreateModel();
+            C_ModelBuilder.CreateModel();
+            D_ModelBuilder.CreateModel();
             // Create single instance of sample data from first line of dataset for model input
-            ModelInput sampleData = new ModelInput();
-            sampleData.Commodity = 1;
-            sampleData.Supplier = 4;
-            sampleData.Manufacturing_Process = 1;
-            sampleData.Volume = 12345;
-            var predictionResult = ConsumeModel.Predict(sampleData);
-            float predicted = predictionResult.Score;
+            //ModelInput sampleData = new ModelInput();
+            //sampleData.Commodity = 2;
+            //sampleData.Supplier = 6;
+            //sampleData.Manufacturing_Process = 3;
+            //sampleData.Volume = 17300;
+            //var predictionResult = ConsumeModel.Predict(sampleData);
+            //float predicted = predictionResult.Score;
         }
     }
 }

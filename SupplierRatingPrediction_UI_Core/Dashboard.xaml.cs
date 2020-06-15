@@ -90,7 +90,6 @@ namespace SupplierRatingPrediction_UI_Core
 
             predictedSuppliers = ConsumeModel.Predict((cmbCommodity.SelectedIndex + 1).ToString(),
                 txtVolume.Text, cmbMPProcess.SelectedItem.ToString());
-
             ShowColumnChart();
         }
 

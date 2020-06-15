@@ -14,14 +14,46 @@ namespace SupplierRatingPredictionML.Model
     {
         // For more info on consuming ML.NET models, visit https://aka.ms/model-builder-consume
         // Method for consuming model in your app
-        public static ModelOutput Predict(ModelInput input)
+        public static ModelOutput Predict_Q(ModelInput input)
         {
 
             // Create new MLContext
             MLContext mlContext = new MLContext();
 
             // Load model & create prediction engine
-            string modelPath = @"C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\Data\MLModel.zip";
+            string modelPath = @"C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\Data\Q_MLModel.zip";
+            ITransformer mlModel = mlContext.Model.Load(modelPath, out var modelInputSchema);
+            var predEngine = mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(mlModel);
+
+            // Use model to make prediction on input data
+            ModelOutput result = predEngine.Predict(input);
+            return result;
+        }
+
+        public static ModelOutput Predict_C(ModelInput input)
+        {
+
+            // Create new MLContext
+            MLContext mlContext = new MLContext();
+
+            // Load model & create prediction engine
+            string modelPath = @"C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\Data\C_MLModel.zip";
+            ITransformer mlModel = mlContext.Model.Load(modelPath, out var modelInputSchema);
+            var predEngine = mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(mlModel);
+
+            // Use model to make prediction on input data
+            ModelOutput result = predEngine.Predict(input);
+            return result;
+        }
+
+        public static ModelOutput Predict_D(ModelInput input)
+        {
+
+            // Create new MLContext
+            MLContext mlContext = new MLContext();
+
+            // Load model & create prediction engine
+            string modelPath = @"C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\Data\D_MLModel.zip";
             ITransformer mlModel = mlContext.Model.Load(modelPath, out var modelInputSchema);
             var predEngine = mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(mlModel);
 
@@ -45,12 +77,23 @@ namespace SupplierRatingPredictionML.Model
                 input.Supplier = float.Parse(supplier.SupplierId.ToString());
                 input.Volume = float.Parse(volume);
                 input.Commodity = float.Parse(commodity);
-                var predictionResult = Predict(input);
-                float predicted = predictionResult.Score;
-                supplier.predicted_Total = Convert.ToInt32(predicted);
+
+                var prediction_Q = Predict_Q(input);
+                float predicted_Q = prediction_Q.Score;
+                supplier.predicted_Q = Convert.ToInt32(predicted_Q);
+
+                var prediction_C = Predict_C(input);
+                float predicted_C = prediction_C.Score;
+                supplier.predicted_C = Convert.ToInt32(predicted_C);
+
+                var prediction_D = Predict_D(input);
+                float predicted_D = prediction_D.Score;
+                supplier.predicted_D = Convert.ToInt32(predicted_D);
+
+                supplier.predicted_Total = supplier.predicted_Q + supplier.predicted_C + supplier.predicted_D;
 
             }
-
+            supplierList = supplierList.OrderBy(p => p.predicted_Total).ToList();
             return supplierList;
         }
 
