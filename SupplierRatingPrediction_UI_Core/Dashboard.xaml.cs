@@ -34,6 +34,7 @@ namespace SupplierRatingPrediction_UI_Core
             //List<SupplierData> predictedSuppliers = new List<SupplierData>();
             ShowColumnChart();
             LoadComboBoxes();
+            ClearContents();
         }
 
         private void LoadComboBoxes()
@@ -72,7 +73,7 @@ namespace SupplierRatingPrediction_UI_Core
                 string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
             DataContext = null;
             DataContext = this;
-
+            barChart.Visibility = Visibility.Visible;
             //barChart.DataContext = valueList;
         }
 
@@ -91,6 +92,19 @@ namespace SupplierRatingPrediction_UI_Core
             predictedSuppliers = ConsumeModel.Predict((cmbCommodity.SelectedIndex + 1).ToString(),
                 txtVolume.Text, cmbMPProcess.SelectedItem.ToString());
             ShowColumnChart();
+
+            myMap.ZoomLevel = 3;
+            double latitude = 20.5937;
+            double longitude = 78.9629;
+            myMap.Center = new Microsoft.Maps.MapControl.WPF.Location(latitude, longitude);
+
+            lblSupplierName.Text = string.Empty;
+            lblSupplierAddress.Text = string.Empty;
+            lblYearsOfRelationship.Text = string.Empty;
+            lblLeadTime.Text = string.Empty;
+            lblSupplierSize.Text = string.Empty;
+
+            pieChart1.Visibility = Visibility.Hidden;
         }
 
         private void barChart_DataClick(object sender, ChartPoint chartPoint)
@@ -109,13 +123,10 @@ namespace SupplierRatingPrediction_UI_Core
             lblLeadTime.Text = supplierData.Supplier_Lead_Time;
             lblSupplierSize.Text = supplierData.Supplier_Size;
 
+            myMap.ZoomLevel = 11;
             double latitude = Double.Parse(supplierData.Supplier_Location.Split(',')[0]);
             double longitude = Double.Parse(supplierData.Supplier_Location.Split(',')[1]);
             myMap.Center = new Microsoft.Maps.MapControl.WPF.Location(latitude, longitude);
-
-            supplierData.predicted_Q = 40;
-            supplierData.predicted_C = 35;
-            supplierData.predicted_D = 4;
             ShowPieChartData(supplierData.predicted_Q, supplierData.predicted_C, supplierData.predicted_D);
         }
 
@@ -146,7 +157,33 @@ namespace SupplierRatingPrediction_UI_Core
                     LabelPoint = PointLabel
                 }
             };
+            pieChart1.Visibility = Visibility.Visible;
+        }
 
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            ClearContents();
+        }
+
+        private void ClearContents()
+        {
+            pieChart1.Visibility = Visibility.Hidden;
+            barChart.Visibility = Visibility.Hidden;
+
+            myMap.ZoomLevel = 3;
+            double latitude = 20.5937;
+            double longitude = 78.9629;
+            myMap.Center = new Microsoft.Maps.MapControl.WPF.Location(latitude, longitude);
+
+            cmbCommodity.SelectedItem = null;
+            cmbMPProcess.SelectedItem = null;
+            txtVolume.Text = string.Empty;
+
+            lblSupplierName.Text = string.Empty;
+            lblSupplierAddress.Text = string.Empty;
+            lblYearsOfRelationship.Text = string.Empty;
+            lblLeadTime.Text = string.Empty;
+            lblSupplierSize.Text = string.Empty;
         }
     }
 }
