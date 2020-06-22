@@ -57,3 +57,4 @@ C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT
 C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPrediction_UI_Core\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPrediction_UI_Core\bin\Debug\netcoreapp3.1\SupplierRatingPredictionML.Model.dll
 C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPrediction_UI_Core\bin\Debug\netcoreapp3.1\SupplierRatingPredictionML.Model.pdb
+C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPrediction_UI_Core\bin\Debug\netcoreapp3.1\SupplierRatingPrediction_UI_Core.dll.config

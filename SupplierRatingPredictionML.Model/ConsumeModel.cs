@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -100,7 +101,7 @@ namespace SupplierRatingPredictionML.Model
         private static List<SupplierData> GetShortlistedSuppliers(string commodity)
         {
             List<SupplierData> supplierList = new List<SupplierData>();
-            SqlConnection conn = new SqlConnection("Data Source=WL353156\\SQLEXPRESS;AttachDbFilename=OrderSupplier.mdf;Integrated Security=True");
+            SqlConnection conn = new SqlConnection("Data Source=.\\SQLEXPRESS ;AttachDbFilename=C:\\Data\\OrderSupplier.mdf;Integrated Security=True");
             conn.Open();
             //Get all suppliers who have commodity
             SqlCommand cmd = new SqlCommand(@"select distinct(supplier), s.Supplier_Name , s.Supplier_Business_Yrs, 

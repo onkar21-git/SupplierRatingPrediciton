@@ -41,7 +41,7 @@ namespace SupplierRatingPredictionML.ConsoleApp
         {
 
             List<OrderData> orderList = new List<OrderData>();
-            SqlConnection conn = new SqlConnection("Data Source=WL353156\\SQLEXPRESS ;Initial Catalog=OrderSupplierDB;Integrated Security=True");
+            SqlConnection conn = new SqlConnection("Data Source=.\\SQLEXPRESS ;AttachDbFilename=C:\\Data\\OrderSupplier.mdf;Integrated Security=True");
             conn.Open();
             //Get all suppliers who have commodity
             SqlCommand cmd = new SqlCommand(@"select Order_Id,Commodity,Volume,Supplier,mp.Manufacturing_Process_Id, 

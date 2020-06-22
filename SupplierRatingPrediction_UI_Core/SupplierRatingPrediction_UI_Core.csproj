@@ -12,10 +12,10 @@
     <None Remove="Images\image-thumb23.png" />
     <None Remove="Images\logo.jpg" />
     <None Remove="Images\Shades-Dark-Grey-1.jpg" />
+    <None Remove="OrderSupplier.mdf" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
     <Folder Include="Styles\" />
     <Folder Include="Resources\" />
   </ItemGroup>
@@ -50,12 +50,6 @@
     <Resource Include="Images\Shades-Dark-Grey-1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Data\OrderSupplierDB.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>
