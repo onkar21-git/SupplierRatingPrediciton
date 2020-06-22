@@ -57,3 +57,4 @@ C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT
 C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPrediction_UI_Core\obj\Release\netcoreapp3.1\SupplierRatingPrediction_UI_Core.csproj.CopyComplete
 C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPrediction_UI_Core\obj\Release\netcoreapp3.1\SupplierRatingPrediction_UI_Core.dll
 C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPrediction_UI_Core\obj\Release\netcoreapp3.1\SupplierRatingPrediction_UI_Core.pdb
+C:\Users\walavonk\Desktop\AI_Project\SourceCodeMain\SupplierRatingPrediction_GIT\SupplierRatingPrediction_UI_Core\bin\Release\netcoreapp3.1\SupplierRatingPrediction_UI_Core.dll.config

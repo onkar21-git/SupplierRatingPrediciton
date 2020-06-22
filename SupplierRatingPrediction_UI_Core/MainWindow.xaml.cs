@@ -28,27 +28,25 @@ namespace SupplierRatingPrediction_UI_Core
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            //if (!string.IsNullOrEmpty(txtUserName.Text) && !string.IsNullOrEmpty(txtPassword.Password))
-            //{
-            //    if (txtUserName.Text == "admin" && txtPassword.Password == "admin")
-            //    {
-            //        Dashboard dashboardPage = new Dashboard();
-            //        dashboardPage.Show();
-            //        this.Close();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Invalid username or password.");
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Invalid username or password.");
-            //}
+            if (!string.IsNullOrEmpty(txtUserName.Text) && !string.IsNullOrEmpty(txtPassword.Password))
+            {
+                if (txtUserName.Text == "admin" && txtPassword.Password == "admin")
+                {
+                    Dashboard dashboardPage = new Dashboard();
+                    dashboardPage.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid username or password.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid username or password.");
+            }
 
-            Dashboard dashboardPage = new Dashboard();
-            dashboardPage.Show();
-            this.Close();
+            
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
